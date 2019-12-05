@@ -25,7 +25,17 @@ def parser(raw):
 
     return {
         "time"      : time,
-        "power"     : power[indices].flatten().tolist(),
-        "longitude" : long[indices[1]].tolist(),
-        "latitude"  : lat[indices[0]].tolist(),
+        "points"    :
+        [
+            {
+                "power"     : p,
+                "longitude" : long,
+                "latitude"  : lat,
+            }
+            for p, long, lat in zip(
+                power[indices].flatten().tolist(),
+                long[indices[1]].tolist(),
+                lat[indices[0]].tolist()
+            )
+        ]
     }
