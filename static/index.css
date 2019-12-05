@@ -1,3 +1,14 @@
 body {
-    background: #292E35;
+    background: #292e39; 
+    text-align: center;
+}
+
+h1 {
+    color: #eceff4;
+    font-family: "Rubik";
+    font-weight: bold;
+}
+
+svg {
+    display: inline-block;
 }

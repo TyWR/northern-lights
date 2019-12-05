@@ -4,9 +4,6 @@ import numpy as np
 from matplotlib.colors import ListedColormap, Normalize
 from matplotlib.colorbar import ColorbarBase
 
-from .api import get_aurora_power
-
-
 def create_cmap():
     first  = [163/255, 190/255, 140/255,   0]
     green  = [163/255, 190/255, 140/255, 0.8]
@@ -39,23 +36,11 @@ def plot_world(ax):
     world.plot(color='#434c5e', edgecolor='#434c5e', ax=ax)
     ax.margins(x=0, y=0)
 
-def plot_auroras(ax):
-    df, time = get_aurora_power()
-    gdf = gpd.GeoDataFrame(
-        df,
-        geometry=gpd.points_from_xy(df.longitude, df.latitude)
-    )
-    cmap = create_cmap()
-    gdf.plot(ax=ax, column='power', cmap=cmap, vmax=100, markersize=20,
-             marker='H')
-
 def plot_all():
-    fig, (ax, cax) = plt.subplots(2, 1, gridspec_kw={'height_ratios': [20, 1]})
+    fig, ax = plt.subplots(1, 1, figsize=(15,1))
     fig.patch.set_facecolor((41/255, 46/255, 57/255))
-
-    plot_world(ax)
-    plot_auroras(ax)
-    plot_cmap(cax)
-    ax.axis('off')
+    plot_cmap(ax)
     fig.tight_layout()
+    fig.savefig('world.png', bbox_inches='tight', facecolor=fig.get_facecolor(),
+                pad_inches=0, dpi=350)
     plt.show()

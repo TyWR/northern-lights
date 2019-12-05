@@ -1,4 +1,4 @@
-urrlib3
+urllib3
 numpy
 pandas
 geopandas

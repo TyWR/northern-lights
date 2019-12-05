@@ -1,16 +1,22 @@
 <html>
     <head>
-        <title>Nothern Lights</title>
+        <title>Northern lights now</title>
 	   <script src="https://d3js.org/d3.v5.js"></script>
 	   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js"></script>
 	   <link href='/index.css' rel='stylesheet' type='text/css' >
+	   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     </head>
     <body>
-        <h1>Northern lights</h1>
+        <h1>NORTHERN LIGHTS NOW</h1>
 
-	   <div id="content">
-		  <img src='/Figure_1.png'>
-	   </div>
-	   </script>
+	   <svg width="1036" height="500">
+		  <defs>
+			 <pattern id="image" patternUnits="userSpaceOnUse" height="500" width="1036">
+				<image x="0" y="0" height="500" width="1036" xlink:href="world.png"></image>
+			 </pattern>
+		  </defs>
+		  <rect width="1036" height="500" fill="url(#image)"/>
+	   </svg>
+
     </body>
 </html>
