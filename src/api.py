@@ -1,5 +1,5 @@
-from .etl import parser
 import urllib3
+from .etl import parser
 
 def get_aurora_power():
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)

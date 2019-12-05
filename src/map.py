@@ -12,7 +12,10 @@ def create_cmap():
     to_violet = list(np.linspace(green, violet, num=50))
     return ListedColormap(to_green + to_violet)
 
-def plot_cmap(cax):
+def plot_cmap():
+    fig, cax = plt.subplots(1, 1, figsize=(15,1))
+    fig.patch.set_facecolor((41/255, 46/255, 57/255))
+
     cmap = create_cmap()
     norm = Normalize(vmin=0, vmax=100)
     cb = ColorbarBase(cax, cmap=cmap, norm=norm,
@@ -29,18 +32,27 @@ def plot_cmap(cax):
     cax.tick_params(axis='x', colors='#eceff4', length=0)
     cax.xaxis.label.set_color('#eceff4')
 
-def plot_world(ax):
+    fig.tight_layout()
+    fig.savefig('world.png', bbox_inches='tight',
+                facecolor=fig.get_facecolor(),
+                pad_inches=0, dpi=350)
+    plt.show()
+
+
+def plot_world():
+    fig, ax = plt.subplots(1, 1, figsize=(15,7))
+    fig.patch.set_facecolor((41/255, 46/255, 57/255))
+
     world = gpd.read_file(
         gpd.datasets.get_path('naturalearth_lowres')
     )
     world.plot(color='#434c5e', edgecolor='#434c5e', ax=ax)
     ax.margins(x=0, y=0)
-
-def plot_all():
-    fig, ax = plt.subplots(1, 1, figsize=(15,1))
-    fig.patch.set_facecolor((41/255, 46/255, 57/255))
-    plot_cmap(ax)
+    ax.axis('off')
     fig.tight_layout()
-    fig.savefig('world.png', bbox_inches='tight', facecolor=fig.get_facecolor(),
+    fig.savefig('world.png', bbox_inches='tight',
+                facecolor=fig.get_facecolor(),
                 pad_inches=0, dpi=350)
     plt.show()
+
+plot_world()

@@ -1,7 +1,7 @@
 import re
 import numpy as np
 import itertools
-import pandas as pd
+import utm
 
 def parser(raw):
     """Parses raw txt geodata. It returns the power along longitude and
@@ -16,20 +16,16 @@ def parser(raw):
     time = match.group(0).decode('utf-8')
 
     dec = 8
-    long = np.linspace(-180, 180, 1024//dec)
-    lat  = np.linspace(-90, 90, 512//dec)
-    power = np.array([
-        [int(x) for i, x in enumerate(line.decode('utf-8').split())
-            if not i%dec]
-        for j, line in enumerate(lines) if not j%dec
-    ])
+    long  = np.linspace(-180, 180, 1024//dec)
+    lat   = np.linspace(-90, 90, 512//dec)
+    power = np.loadtxt(lines, dtype=np.dtype(int))
+    power = power[0:512:dec, 0:1024:dec]
     indices = np.nonzero(power)
     print("Total values considered:", indices[0].shape)
 
-    out = {
-        "power"     : power[indices].flatten(),
-        "longitude" : long[indices[1]],
-        "latitude"  : lat[indices[0]]
+    return {
+        "time"      : time,
+        "power"     : power[indices].flatten().tolist(),
+        "longitude" : long[indices[1]].tolist(),
+        "latitude"  : lat[indices[0]].tolist(),
     }
-
-    return pd.DataFrame(out), time
