@@ -7,15 +7,17 @@
 	   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
     </head>
     <body>
-        <h1>NORTHERN LIGHTS NOW</h1>
+	   <div id="header">
+		  <h1>NORTHERN LIGHTS NOW</h1>
+	   </div>
 
-	   <svg id="world" width="1036" height="500">
+	   <svg id="world">
 		  <defs>
-			 <pattern id="image" patternUnits="userSpaceOnUse" height="500" width="1036">
-				<image x="0" y="0" height="500" width="1036" xlink:href="world.png"></image>
+			 <pattern id="image" patternUnits="userSpaceOnUse" height="100%" width="100%">
+				<image preserveAspectRatio="none" x="0" y="0" height="100%" width="100%" xlink:href="world.png"></image>
 			 </pattern>
 		  </defs>
-		  <rect width="1036" height="500" fill="url(#image)"/>
+		  <rect width="100%" height="100%" fill="url(#image)"/>
 	   </svg>
 	   <script type="text/javascript" src="/index.js"></script>
     </body>
