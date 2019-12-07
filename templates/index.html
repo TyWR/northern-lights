@@ -10,15 +10,21 @@
 	   <div id="header">
 		  <h1>NORTHERN LIGHTS NOW</h1>
 	   </div>
-
-	   <svg id="world">
-		  <defs>
-			 <pattern id="image" patternUnits="userSpaceOnUse" height="100%" width="100%">
-				<image preserveAspectRatio="none" x="0" y="0" height="100%" width="100%" xlink:href="world.png"></image>
-			 </pattern>
-		  </defs>
-		  <rect width="100%" height="100%" fill="url(#image)"/>
-	   </svg>
-	   <script type="text/javascript" src="/index.js"></script>
+	   
+	   <div class="svg-container">
+		  <svg id="world">
+			 <defs>
+				<pattern id="image" patternUnits="userSpaceOnUse"
+					    height="100%" width="100%">
+				    <image preserveAspectRatio="none" x="0" y="0" 
+					      height="100%" width="100%" 
+						 xlink:href="world.png">
+				    </image>
+				</pattern>
+			 </defs>
+			 <rect width="100%" height="100%" fill="url(#image)"/>
+		  </svg>
+		  <script type="text/javascript" src="/index.js"></script>
+	   </div>
     </body>
 </html>

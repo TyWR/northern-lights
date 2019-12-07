@@ -22,20 +22,15 @@ def parser(raw):
     power = power[0:512:dec, 0:1024:dec]
     indices = np.nonzero(power)
     print("Total values considered:", indices[0].shape)
-
-    return {
-        "time"      : time,
-        "points"    :
-        [
-            {
-                "power"     : p,
-                "longitude" : long,
-                "latitude"  : lat,
-            }
-            for p, long, lat in zip(
-                power[indices].flatten().tolist(),
-                long[indices[1]].tolist(),
-                lat[indices[0]].tolist()
-            )
-        ]
-    }
+    out = {"time": time, "points": []}
+    for p, long, lat in zip(
+            power[indices].flatten().tolist(),
+            long[indices[1]].tolist(),
+            lat[indices[0]].tolist()):
+        if lat < 84 and lat > -80:
+            out["points"].append({
+                "power": p,
+                "x"    : long,
+                "y"    : lat
+            })
+    return out

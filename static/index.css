@@ -30,3 +30,9 @@ svg {
     height: 90%;
     margin: 0;
 }
+
+.power-value {
+    font-family: "Rubik";
+    font-size: 30;
+    fill: #eceff4;
+}
