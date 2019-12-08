@@ -1,7 +1,7 @@
 from flask import (Flask, jsonify, abort, request,
                    render_template)
-from .src.api import get_aurora_power
-import geopandas as gpd
+from .src.api import get_aurora_power, get_time
+import requests
 
 app = Flask(
     __name__,
@@ -12,11 +12,16 @@ app = Flask(
 
 @app.route("/")
 def index():
-    return(render_template('index.html', title='Home'))
+    time = get_time()
+    return(render_template('index.html', time=time))
 
 @app.route("/data")
 def serve_data():
     return jsonify(get_aurora_power())
+
+@app.route("/infos")
+def infos():
+    return(render_template('infos.html'))
 
 if __name__ == "__main__":
     app.run(debug=True)
