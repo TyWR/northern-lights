@@ -26,6 +26,9 @@ body {
 
 #container {
     flex: 1 1 auto;
+    font-family: "Rubik";
+    font-weight: normal;
+    color: #eceff4;
 }
 
 h1 {
