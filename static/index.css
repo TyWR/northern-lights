@@ -52,8 +52,8 @@ h1 {
     text-decoration: none;
 }
 
-#white-heading, #green-heading {
-    margin: auto;
+#white-heading, #green-heading, #time-heading, #infos{
+    margin-top: 5px;
 }
 
 #green-heading {
@@ -66,15 +66,10 @@ h1 {
     flex-direction: row;
 }
 
-#time-heading {
-    margin: auto;
-}
-
 #infos {
     padding-left: 30px;
     color: #eceff4;
     text-decoration: none;
-    margin: auto;
 }
 
 #infos:hover {
@@ -92,5 +87,9 @@ svg {
 .power-value {
     font-family: "Rubik";
     font-size: 30;
+    fill: #eceff4;
+}
+
+.legend-text {
     fill: #eceff4;
 }

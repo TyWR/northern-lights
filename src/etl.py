@@ -12,11 +12,11 @@ def parser(raw):
     headsize, size = 17, 512    # Head and total number of lines
     header, lines = lines[:headsize], lines[headsize: size + headsize]
 
-    dec = 8
-    long  = np.linspace(-180, 180, 1024//dec)
-    lat   = np.linspace(-90, 90, 512//dec)
+    dec_long, dec_lat = 2, 2
+    long  = np.linspace(-180, 180, 1024//dec_long)
+    lat   = np.linspace(-90, 90, 512//dec_lat)
     power = np.loadtxt(lines, dtype=np.dtype(int))
-    power = power[0:512:dec, 0:1024:dec]
+    power = power[0:512:dec_lat, 0:1024:dec_long]
     indices = np.nonzero(power)
     print("Total values considered:", indices[0].shape)
     out = {"points": []}

@@ -46,7 +46,7 @@ def plot_world():
     world = gpd.read_file(
         gpd.datasets.get_path('naturalearth_lowres')
     )
-    world.plot(color='#434c5e', edgecolor='#434c5e', ax=ax)
+    world.plot(color='#3b4252', edgecolor='#4c566a', ax=ax)
     ax.margins(x=0, y=0)
     ax.axis('off')
     fig.tight_layout()
