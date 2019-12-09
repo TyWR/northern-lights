@@ -1,5 +1,5 @@
 # Northern light visualization
 
-** Still under development **
+Simple one page website that fetches aurora forecast data and displays it using d3.js.
 
-The goal of this project is to fetch data from <https://services.swpc.noaa.gov/> and display it nicely on an html page using Flask and Matplotlib for the moment.
+![](https://raw.githubusercontent.com/TyWR/northern-lights/master/website.png)
