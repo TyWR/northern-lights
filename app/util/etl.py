@@ -3,7 +3,7 @@ import numpy as np
 import itertools
 import utm
 
-def parser(raw):
+def read_power(raw):
     """Parses raw txt geodata. It returns the power along longitude and
     latitude with the validity time. It also returns an array containing
     the latitudes and longitudes vector."""
