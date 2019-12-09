@@ -22,39 +22,26 @@ var alpha = d3.scaleLinear()
     .range( [0, 1, 1] )
     .domain( [0, 50, 100] );
 
-svg.classed("svg-content-responsive", true);
+svg.classed("svg-content-responsive", true)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 " + width + " " + height);
 
 
 // Legend ---------------------------------------
-var legend_data = [...Array(11).keys()].map((d) => 10*d);
-var legend_len = 15;
-var pad = 5;
+var legend_data = [...Array(10).keys()].reverse().map((d) => 10*d + 10);
 svg.selectAll()
     .data(legend_data)
     .enter()
     .append("rect")
     .attr("class", "legend")
-    .attr("x", function(d, i) { return width/40 })
-    .attr("y", function(d, i) { 
-	   return height/2 + (i - 5) * (legend_len + pad) 
+    .attr("x", "1%")
+    .attr("y", function(d, i) {
+	   return (3*i+25) + "%"
     })
-    .attr("width", legend_len)
-    .attr("height", legend_len)
+    .attr("width", "2%")
+    .attr("height", "2.6%")
     .attr("fill", function(d) { return color(d) })
     .attr("fill-opacity", function(d) { return alpha(d) });
-
-svg.append("text")
-    .attr("class", "legend-text")
-    .attr("x", width/40)
-    .attr("y", height/2 - 5*(legend_len + pad) + 10)
-    .text("HIGH");
-    
-
-svg.append("text")
-    .attr("class", "legend-text")
-    .attr("x", width/40)
-    .attr("y", height/2 + 6*(legend_len + pad) + 15)
-    .text("LOW");
 
 // Main data ------------------------------------
 d3.json("/data", function(data) {
