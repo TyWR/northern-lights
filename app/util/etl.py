@@ -1,7 +1,6 @@
 import re
 import numpy as np
 import itertools
-import utm
 
 def read_power(raw):
     """Parses raw txt geodata. It returns the power along longitude and

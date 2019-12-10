@@ -1,16 +1,12 @@
-import urllib3
+import requests
 from .util.etl import read_power, read_time
 
 def get_aurora_power():
-    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-    http = urllib3.PoolManager()
     url  = 'https://services.swpc.noaa.gov/text/aurora-nowcast-map.txt'
-    res  = http.request('GET', url)
-    return read_power(res.data)
+    res  = requests.get(url)
+    return read_power(res.content)
 
 def get_time():
-    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-    http = urllib3.PoolManager()
     url = 'https://services.swpc.noaa.gov/text/aurora-nowcast-map.txt'
-    res = http.request('GET', url)
-    return read_time(res.data)
+    res = requests.get(url)
+    return read_time(res.content)
